@@ -110,6 +110,10 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
 
     }
 
+    public void selecionarFormaDePagamento(){
+
+    }
+
     public List<ProdutoAbstrato> getListaProdutos() {
         return listaProdutos;
     }

@@ -1,7 +1,5 @@
 package Menus;
 
-import Pessoas.Administrador;
-
 import java.util.Scanner;
 
 public class MenuInicial {

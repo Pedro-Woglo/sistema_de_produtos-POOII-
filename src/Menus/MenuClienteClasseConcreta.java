@@ -6,11 +6,12 @@ import Produtos.ProdutoAbstrato;
 import java.util.*;
 
 public class MenuClienteClasseConcreta extends MenuClienteAbstract {
+
     public MenuClienteClasseConcreta(Scanner sc, List<ProdutoAbstrato> listaProdutos) {
         super(sc, listaProdutos);
     }
 
-    public  void menuCliente() {
+    public void menuCliente() {
         int opcaoMenuCliente;
         do {
             System.out.println("-------Menu Cliente ------: ");
@@ -19,6 +20,7 @@ public class MenuClienteClasseConcreta extends MenuClienteAbstract {
             System.out.println("3 - Filtrar por marca");
             System.out.println("4 - Ordenar por nome(ordem crescente e descrescente)");
             System.out.println("5 - Ordenar por preço(ordem crescente e descrescente)");
+            System.out.println("6 - Selecionar forma de pagamento");
             System.out.println("0 - Sair do Menu Cliente");
             System.out.println("Entre com a opção desejada: ");
             opcaoMenuCliente = sc.nextInt();
@@ -40,6 +42,9 @@ public class MenuClienteClasseConcreta extends MenuClienteAbstract {
                     break;
                 case 5:
                     ordenarPorPreco();
+                    break;
+                case 6:
+                    selecionarFormaDePagamento();
                     break;
             }
         } while(opcaoMenuCliente!=0);
