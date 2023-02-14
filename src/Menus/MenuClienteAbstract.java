@@ -118,6 +118,7 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
 
     }
 
+    @Override
     public void selecionarFormaDePagamento(){
         Double preco = 0d;
         if(listaProdutos.isEmpty()){
@@ -127,30 +128,35 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
             for(ProdutoAbstrato produto : listaProdutos){
                 preco += produto.getPreco();
             }
+            System.out.println("Valor total: R$" + preco);
+            System.out.println("Selecione a forma de pagamento: (b)Boleto/ (p)PIX/ (c)Cartão de crédito/ (f)Faturamento");
+            char opcaoPagamento = sc.next().charAt(0);
+            boolean aux = true;
+            if (opcaoPagamento == 'b') {
+                aux = false;
+                AntiFraude.verificaFraude(EnumFormaDePagamento.BOLETO, preco);
+                listaProdutos.removeAll(listaProdutos);
+            }
+            if (opcaoPagamento == 'p') {
+                aux = false;
+                AntiFraude.verificaFraude(EnumFormaDePagamento.PIX, preco);
+                listaProdutos.removeAll(listaProdutos);
+            }
+            if (opcaoPagamento == 'c') {
+                aux = false;
+                AntiFraude.verificaFraude(EnumFormaDePagamento.CARTAODECREDITO, preco);
+                listaProdutos.removeAll(listaProdutos);
+            }
+            if (opcaoPagamento == 'f') {
+                aux = false;
+                AntiFraude.verificaFraude(EnumFormaDePagamento.FATURAMENTO, preco);
+                listaProdutos.removeAll(listaProdutos);
+            }
+            if(aux == true){
+                System.out.println("Forma de pagamento inviável!");
+            }
         }
-        System.out.println("Valor total: R$" + preco);
-        System.out.println("Selecione a forma de pagamento: (b)Boleto/ (p)PIX/ (c)Cartão de crédito/ (f)Faturamento");
-        char opcaoPagamento = sc.next().charAt(0);
-        boolean aux = true;
-        if (opcaoPagamento == 'b') {
-            AntiFraude.verificaFraude(EnumFormaDePagamento.BOLETO, preco);
-            listaProdutos.removeAll(listaProdutos);
-        }
-        if (opcaoPagamento == 'p') {
-            AntiFraude.verificaFraude(EnumFormaDePagamento.PIX, preco);
-            listaProdutos.removeAll(listaProdutos);
-        }
-        if (opcaoPagamento == 'c') {
-            AntiFraude.verificaFraude(EnumFormaDePagamento.CARTAODECREDITO, preco);
-            listaProdutos.removeAll(listaProdutos);
-        }
-        if (opcaoPagamento == 'f') {
-            AntiFraude.verificaFraude(EnumFormaDePagamento.FATURAMENTO, preco);
-            listaProdutos.removeAll(listaProdutos);
-        }
-        if(aux == true){
-            System.out.println("Forma de pagamento inviável!");
-        }
+       
     }
 
     public List<ProdutoAbstrato> getListaProdutos() {
