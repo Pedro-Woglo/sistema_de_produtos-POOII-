@@ -1,4 +1,4 @@
 # SistemadeProdutos-POOII
 
-OBS: Adm - login: "lol", senha: "123".
+OBS: Adm - login: "admin", senha: "admin".
 
