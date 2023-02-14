@@ -1,7 +1,9 @@
 package Menus;
 
 import Enums.EnumCategoria;
+import Enums.EnumFormaDePagamento;
 import Interfaces.MenuClienteAcoes;
+import Pagamentos.AntiFraude;
 import Produtos.ProdutoAbstrato;
 
 import java.util.*;
@@ -31,7 +33,7 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
 
     @Override
     public void filtrarPorCategoria() {
-        System.out.println("Filtrar pela categoria: (m)Mercado/(l)Livro/(i)Informática");
+        System.out.println("Filtrar pela categoria: (m)Mercado/ (l)Livro/ (i)Informática");
         char opcaoFiltroPorCategoria = sc.next().charAt(0);
         boolean aux = true;
         if (opcaoFiltroPorCategoria == 'm') {
@@ -81,7 +83,7 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
 
     @Override
     public void ordenarPorNome() {
-        System.out.println("Ordenar a lista por nome na ordem crescente ou descrescente?(c/d)");
+        System.out.println("Ordenar a lista por nome na ordem crescente ou descrescente? (c/d)");
         char opcaoOrdemNome = sc.next().charAt(0);
         if (opcaoOrdemNome == 'c') {
             Collections.sort(listaProdutos);
@@ -99,7 +101,7 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
 
     @Override
     public void ordenarPorPreco() {
-        System.out.println("Ordenar a lista por preço na ordem crescente ou descrescente?(c/d)");
+        System.out.println("Ordenar a lista por preço na ordem crescente ou descrescente? (c/d)");
         char opcaoOrdemPreco = sc.next().charAt(0);
         if (opcaoOrdemPreco == 'c') {
             Collections.sort(listaProdutos, Comparator.comparing(ProdutoAbstrato::getPreco));
@@ -117,7 +119,38 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
     }
 
     public void selecionarFormaDePagamento(){
-        
+        Double preco = 0d;
+        if(listaProdutos.isEmpty()){
+            System.out.println("Não há produtos no carrinho!");
+        }
+        else{
+            for(ProdutoAbstrato produto : listaProdutos){
+                preco += produto.getPreco();
+            }
+        }
+        System.out.println("Valor total: R$" + preco);
+        System.out.println("Selecione a forma de pagamento: (b)Boleto/ (p)PIX/ (c)Cartão de crédito/ (f)Faturamento");
+        char opcaoPagamento = sc.next().charAt(0);
+        boolean aux = true;
+        if (opcaoPagamento == 'b') {
+            AntiFraude.verificaFraude(EnumFormaDePagamento.BOLETO, preco);
+            listaProdutos.removeAll(listaProdutos);
+        }
+        if (opcaoPagamento == 'p') {
+            AntiFraude.verificaFraude(EnumFormaDePagamento.PIX, preco);
+            listaProdutos.removeAll(listaProdutos);
+        }
+        if (opcaoPagamento == 'c') {
+            AntiFraude.verificaFraude(EnumFormaDePagamento.CARTAODECREDITO, preco);
+            listaProdutos.removeAll(listaProdutos);
+        }
+        if (opcaoPagamento == 'f') {
+            AntiFraude.verificaFraude(EnumFormaDePagamento.FATURAMENTO, preco);
+            listaProdutos.removeAll(listaProdutos);
+        }
+        if(aux == true){
+            System.out.println("Forma de pagamento inviável!");
+        }
     }
 
     public List<ProdutoAbstrato> getListaProdutos() {
