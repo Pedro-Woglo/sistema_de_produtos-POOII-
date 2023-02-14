@@ -1,10 +1,8 @@
 package Produtos;
 
 import Enums.EnumCategoria;
-import Interfaces.InformaticaAcoes;
-import Interfaces.ProdutoAcoes;
 
-public class Informatica extends ProdutoAbstrato implements ProdutoAcoes, InformaticaAcoes {
+public class Informatica extends ProdutoAbstrato{
 
     private String software;
     private Double memoria;
@@ -41,20 +39,6 @@ public class Informatica extends ProdutoAbstrato implements ProdutoAcoes, Inform
     public void fazerPromocao() {
         System.out.println("Promoção para estudantes");
 
-    }
-
-    @Override
-    public String solicitacaoDeTecnicoEmDomicilio() {
-        return "Agendamento do serviço pela central de telefone";
-    }
-
-    @Override
-    public void indicacaoMemoria(double memoriaGigas) {
-        if (memoriaGigas <= 8) {
-            System.out.println("Indicado para usuários que usam pouco o computador, apenas para vídeos, jogos simples em flash e planilhas");
-        } else if (memoriaGigas >= 32) {
-            System.out.println("Inidcado para usuários que trabalham com renderização de imagens, edição de vídeos e design no geral");
-        }
     }
 
     @Override

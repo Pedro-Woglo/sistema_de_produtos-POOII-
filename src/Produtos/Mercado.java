@@ -2,13 +2,12 @@ package Produtos;
 
 import Enums.EnumCategoria;
 import Enums.EnumSecoesMercado;
-import Interfaces.ProdutoAcoes;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class Mercado extends ProdutoAbstrato implements ProdutoAcoes {
+public class Mercado extends ProdutoAbstrato{
 
 
     private Date dataValidade;

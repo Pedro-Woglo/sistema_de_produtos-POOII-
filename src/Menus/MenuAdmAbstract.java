@@ -16,12 +16,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public abstract class MenuAdmAbstract implements MenuAdmAcoes {
-    protected Scanner sc;
+    protected static Scanner sc = new Scanner(System.in);
     protected  List<ProdutoAbstrato> listaProdutos = new ArrayList<>();
     private  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    public MenuAdmAbstract(Scanner sc, List <ProdutoAbstrato> listaProdutos) {
-        this.sc = sc;
+    public MenuAdmAbstract(List <ProdutoAbstrato> listaProdutos) {
         this.listaProdutos=listaProdutos;
     }
 

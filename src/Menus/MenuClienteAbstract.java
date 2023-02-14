@@ -13,16 +13,22 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
     protected List<ProdutoAbstrato> listaProdutos = new ArrayList<>();
 
     public MenuClienteAbstract(Scanner sc, List<ProdutoAbstrato> listaProdutos) {
-        this.listaProdutos=listaProdutos;
-        this.sc = sc;
+        this.listaProdutos = listaProdutos;
+        MenuClienteAbstract.sc = sc;
     }
 
     @Override
     public void visualizarProdutos() {
-        for (ProdutoAbstrato produto : listaProdutos) {
-            System.out.println(produto);
+        if (listaProdutos.isEmpty()){
+            System.out.println("Não há produtos cadastrados no momento!");
+        }
+        else{
+            for (ProdutoAbstrato produto : listaProdutos) {
+                System.out.println(produto);
+            }
         }
     }
+
     @Override
     public void filtrarPorCategoria() {
         System.out.println("Filtrar pela categoria: (m)Mercado/(l)Livro/(i)Informática");
@@ -111,7 +117,7 @@ public abstract class MenuClienteAbstract implements MenuClienteAcoes  {
     }
 
     public void selecionarFormaDePagamento(){
-
+        
     }
 
     public List<ProdutoAbstrato> getListaProdutos() {

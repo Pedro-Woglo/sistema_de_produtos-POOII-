@@ -1,6 +1,7 @@
 package Enums;
 
 public enum EnumSecoesMercado {
+    
     HIGIENE("Limpeza e higiene", 1),
     FRIOS("Congelados e carnes", 2),
     GRAOS("Grãos e perecíveis", 3),

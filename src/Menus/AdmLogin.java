@@ -6,19 +6,19 @@ import java.util.Scanner;
 
 public class AdmLogin {
 
-    private Scanner sc;
+    private static Scanner sc = new Scanner(System.in);
 
-     Administrador administrador;
-    public AdmLogin(Scanner sc){
-        this.sc=sc;}
+        public AdmLogin(Scanner sc){
+        AdmLogin.sc=sc;
+    }
 
-       public Administrador loginAdm() {
+       public static Administrador loginAdm() {
            System.out.println("-------Login Administrador---------");
            System.out.print("Digite o login:");
            String loginAdm = sc.next();
            System.out.print("Digite a senha:");
            String senhaAdm = sc.next();
-           return administrador = new Administrador(loginAdm,senhaAdm);
+           return new Administrador(loginAdm,senhaAdm);
        }
 
 }

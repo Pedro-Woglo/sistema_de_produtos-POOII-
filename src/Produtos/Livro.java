@@ -1,10 +1,8 @@
 package Produtos;
 
 import Enums.EnumCategoria;
-import Interfaces.ProdutoAcoes;
 
-
-public class Livro extends ProdutoAbstrato implements ProdutoAcoes {
+public class Livro extends ProdutoAbstrato{
 
     private String editora;
     private String autorSobrenome;

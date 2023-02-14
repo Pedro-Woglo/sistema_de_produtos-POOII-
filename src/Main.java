@@ -6,6 +6,8 @@ import ValidarUsuario.ValidarCliente;
 
 import java.util.*;
 
+import Enums.EnumFormaDePagamento;
+
 public class Main {
 
     private static Scanner sc = new Scanner(System.in);
@@ -19,13 +21,13 @@ public class Main {
             MenuInicial.menuInicial();
             opcaoMenuInicial = sc.nextInt();
             if (opcaoMenuInicial == 1) {
-                boolean abreMenuAdm = ValidarAdm.validaAdmLoginSenha(new AdmLogin(sc).loginAdm());
+                boolean abreMenuAdm = ValidarAdm.validaAdmLoginSenha(AdmLogin.loginAdm());
                 if (abreMenuAdm) {
-                    new MenuAdmClasseConcreta(sc, listaProdutos).menuAdministrador();
+                    new MenuAdmClasseConcreta(listaProdutos).menuAdministrador();
                 }
             }
             if (opcaoMenuInicial == 2) {
-                boolean abreMenuCliente = ValidarCliente.validaClienteLoginSenha(new ClienteCadastro(sc).cadastroCliente(), new ClienteLogin(sc).loginCliente());
+                boolean abreMenuCliente = ValidarCliente.validaClienteLoginSenha(ClienteCadastro.cadastroCliente(), ClienteLogin.loginCliente());
                 if (abreMenuCliente) {
                     new MenuClienteClasseConcreta(sc,listaProdutos).menuCliente();
                 }

@@ -6,12 +6,10 @@ import java.util.Scanner;
 
 public class ClienteLogin {
 
-    private static Scanner sc;
-
-    private static Cliente cliente;
+    private static Scanner sc = new Scanner(System.in);
 
     public ClienteLogin(Scanner sc) {
-        this.sc = sc;
+        ClienteLogin.sc = sc;
     }
     public static Cliente loginCliente() {
         System.out.println("-------Login Cliente---------");
@@ -19,7 +17,7 @@ public class ClienteLogin {
         String loginCliente = sc.next();
         System.out.print("Digite a senha:");
         String senhaCliente = sc.next();
-        return cliente= new Cliente(loginCliente, senhaCliente);
+        return new Cliente(loginCliente, senhaCliente);
     }
 }
 

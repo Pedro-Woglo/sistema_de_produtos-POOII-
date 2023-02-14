@@ -11,4 +11,6 @@ public interface MenuClienteAcoes {
     void ordenarPorNome();
 
     void ordenarPorPreco();
+
+    void selecionarFormaDePagamento();
 }
